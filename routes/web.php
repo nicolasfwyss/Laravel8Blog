@@ -15,14 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [StartpageController::class, 'index']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::name('admin.')->group(function () {
+            Route::view('/', 'backend.index')->name('index');
+        });
+    });
+});
+
+Route::get('/blog/{id}', function ($id) {
+    $post = Post::first();
+    return view('blog.show', compact('post'));
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', [StartpageController::class, 'index']);
+Auth::routes();
 
-Route::get('/blog/{id}', function ($id){
-    $post = Post::first();
-    return view('blog.show', compact('post'));
-
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
