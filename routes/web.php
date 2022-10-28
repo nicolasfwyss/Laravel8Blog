@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StartpageController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,9 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/', [StartpageController::class, 'index']);
+
+Route::get('/blog/{id}', function ($id){
+    $post = Post::first();
+    return view('blog.show', compact('post'));
+
+});
