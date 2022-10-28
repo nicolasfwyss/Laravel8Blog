@@ -19,8 +19,6 @@ class StartpageController extends Controller
             ->limit(5)
             ->get();
 
-
-
         return view('index', compact('posts'));
     }
 
