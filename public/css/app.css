@@ -555,14 +555,14 @@ video {
 .-mt-px {
   margin-top: -1px;
 }
-.mb-0 {
-  margin-bottom: 0px;
-}
 .mr-auto {
   margin-right: auto;
 }
 .ml-auto {
   margin-left: auto;
+}
+.mb-0 {
+  margin-bottom: 0px;
 }
 .mb-5 {
   margin-bottom: 1.25rem;

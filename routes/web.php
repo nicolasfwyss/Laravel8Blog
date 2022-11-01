@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\StartpageController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -25,10 +26,7 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::get('/blog/{id}', function ($id) {
-    $post = Post::first();
-    return view('blog.show', compact('post'));
-});
+Route::resource('/post', PostController::class);
 
 Route::get('/welcome', function () {
     return view('welcome');

@@ -14,7 +14,7 @@ class BlogTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->post = Post::first();
+        $this->post = Post::inRandomOrder()->first();
         $this->withoutExceptionHandling();
     }
 
@@ -24,6 +24,7 @@ class BlogTest extends TestCase
     public function test_blogs_exists()
     {
         $this->assertDatabaseCount('posts', 100);
+
     }
 
 
@@ -32,22 +33,23 @@ class BlogTest extends TestCase
      */
     public function test_blog_can_be_viewed()
     {
-        $response = $this->get('/blog/'.$this->post->id);
+        $response = $this->get('/post/'.$this->post->slug);
         $response->assertStatus(200);
     }
 
     /**
      * @test
      */
-    public function test_blog_has_title()
+    public function test_blog_has_correct_data()
     {
-        $response = $this->get('/blog/'.$this->post->id);
+        $response = $this->get('/post/'.$this->post->slug);
         $response
             ->assertViewIs('blog.show')
             ->assertSee($this->post->title)
             ->assertSee($this->post->body)
             ->assertSee($this->post->user->name)
-            ->assertSee($this->post->created_at);
+            ->assertSee($this->post->created_at)
+            ->assertSee($this->post->email);
 
     }
 

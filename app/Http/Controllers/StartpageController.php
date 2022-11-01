@@ -16,7 +16,7 @@ class StartpageController extends Controller
         $posts = Post::with('user')
             ->latest()
             ->active()
-            ->limit(5)
+            ->limit(10)
             ->get();
 
         return view('index', compact('posts'));
