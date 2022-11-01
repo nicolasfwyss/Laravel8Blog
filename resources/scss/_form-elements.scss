@@ -1,0 +1,20 @@
+.form-group{
+    @apply my-2;
+}
+
+.form-label{
+    @apply text-sm font-bold text-gray-500;
+}
+
+.form-input{
+    @apply border border-gray-300 p-2 text-gray-700 w-full bg-transparent focus:bg-yellow-100;
+}
+
+.is-invalid{
+    @apply  border-red-800;
+}
+
+.invalid-feedback{
+     @apply  text-xs text-red-800 mt-2;
+ }
+
