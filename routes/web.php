@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\StartpageController;
+use App\Http\Controllers\Backend\PostController as BackendPostController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::name('admin.')->group(function () {
             Route::view('/', 'backend.index')->name('index');
+            Route::resource('/post',BackendPostController::class);
         });
     });
 });

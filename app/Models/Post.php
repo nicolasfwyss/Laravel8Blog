@@ -13,6 +13,8 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes, HasSlug;
 
+    protected $guarded = ['id', 'user_id'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -26,6 +28,11 @@ class Post extends Model
     public function scopeActive($query)
     {
         return $query->where('created_at', '<=', now());
+    }
+
+    public function isTrashed()
+    {
+        return $this->trashed();
     }
 
     /**

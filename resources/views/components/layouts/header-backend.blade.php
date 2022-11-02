@@ -3,8 +3,8 @@
         <ul class="flex space-x-5">
             <li class="font-bold mr-5text-blue-600">Laravel 8 Blog</li>
             <li><a href="/">zur Website</a></li>
-            <li><a href="#">Option 1</a></li>
-            <li><a href="#">Option 2</a></li>
+            <li><a href="{{ route('admin.index') }}">Dashboard</a></li>
+            <li><a href="{{ route('admin.post.index') }}">Beiträge</a></li>
             <li><a href="#">Option 3</a></li>
         </ul>
         <ul>

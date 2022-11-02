@@ -21,6 +21,10 @@ class PostFactory extends Factory
             'created_at' => $this->faker->dateTimeBetween('2021-01-01', '2022-12-31'),
             'deleted_at' => $this->faker->randomElement([
                 null,
+                null,
+                null,
+                null,
+                null,
                 $this->faker->dateTimeBetween('2021-01-01', '2022-12-31'),
             ])
         ];

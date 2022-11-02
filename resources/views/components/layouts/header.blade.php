@@ -8,8 +8,13 @@
             <li><a href="#">Impressum</a></li>
         </ul>
         <ul class="flex space-x-5">
-            <li><a href="{{ route('admin.index') }}">Login</a></li>
-            <li><a href="{{ route('register') }}">Register</a></li>
+            @guest
+                <li><a href="{{ route('admin.index') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Register</a></li>
+            @else
+
+                <li><a href="{{ route('admin.index') }}"> {{Auth::user()->name }}</a></li>
+            @endguest
         </ul>
     </nav>
 </header>
