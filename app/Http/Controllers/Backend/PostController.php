@@ -89,6 +89,7 @@ class PostController extends Controller
         ]);
 
         $post->update($data);
+        self::success('Der Beitrag wurde erfolgreich gespeichert');
         return redirect(route('admin.post.index'));
 
         //TODO Flash Messages
@@ -103,10 +104,14 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->isTrashed() ? $post->restore() : $post->delete();
-
+        if ($post->isTrashed()) {
+            $post->restore();
+            self::success("{$post->title} wurde wiederhergestellt");
+        } else {
+            $post->delete();
+            self::danger("{$post->title} wurde gelöscht)");
+        }
         return redirect(route('admin.post.index'));
-
         //TODO Flash Messages
     }
 }

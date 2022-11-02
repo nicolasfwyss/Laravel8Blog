@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors')
+
 module.exports = {
     mode: 'jit',
     content: [
@@ -7,7 +10,11 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors:{
+                lime: colors.lime
+            }
+        },
     },
     plugins: [
         require('@tailwindcss/line-clamp'),
