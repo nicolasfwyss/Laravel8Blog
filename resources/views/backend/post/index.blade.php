@@ -12,7 +12,7 @@
                 <th class="bg-blue-800 border border-gray-200 p-2">ID</th>
                 <th class="bg-blue-800 border border-gray-200 p-2">Datum</th>
                 <th class="bg-blue-800 border border-gray-200 p-2">Title</th>
-                <th class="bg-blue-800 border border-gray-200 p-2"></th>
+                {{--<th class="bg-blue-800 border border-gray-200 p-2"></th>--}}
                 <th class="bg-blue-800 border border-gray-200 p-2">Optionen</th>
             </tr>
             </thead>
@@ -22,21 +22,26 @@
                     <td class="border border-gray-200 p-2">{{ $post->id }}</td>
                     <td class="border border-gray-200 p-2">{{ $post->created_at }}</td>
                     <td class="border border-gray-200 p-2">{{ $post->title }}</td>
-                    <td class="border border-gray-200 p-2">
+                    {{--<td class="border border-gray-200 p-2">
                         @if($post->isTrashed())
                             <i class="far fa-dot-circle text-red-700"></i>
                         @else
                             <i class="far fa-dot-circle text-green-600"></i>
                         @endif
-                    </td>
+                    </td>--}}
                     <td class="border border-gray-200 p-2">
                         <div class="flex">
-                            <a href="{{ route('admin.post.edit', $post->slug) }}" class="btn btn-primary"> <i class="px-1 fa fa-pencil-alt fa-fw"></i> </a>
+                            <a href="{{ route('admin.post.edit', $post->slug) }}" class="btn btn-secondarya"> <i
+                                    class="px-1 fa fa-pencil-alt fa-fw"></i> </a>
                             <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-trash-alt fa-fw"></i>
+                                <button type="submit" class="btn btn-secondary">
+                                    @if($post->isTrashed())
+                                        <i class="fa fa-toggle-off fa-fw text-red-500"></i>
+                                    @else
+                                        <i class="fa fa-toggle-on fa-fw text-green-500"></i>
+                                    @endif
                                 </button>
                             </form>
                         </div>

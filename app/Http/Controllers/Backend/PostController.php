@@ -17,7 +17,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::withTrashed()->paginate();
+        $posts = Post::withTrashed()
+            ->orderByDesc('created_at')
+            ->paginate();
+
         return view('backend.post.index', compact('posts'));
     }
 
@@ -45,6 +48,8 @@ class PostController extends Controller
         ]);
 
         Auth::user()->posts()->create($data);
+
+        self::success('Der Beitrag wurde erfolgreich erstellt');
 
         return redirect(route('admin.post.index'));
 
