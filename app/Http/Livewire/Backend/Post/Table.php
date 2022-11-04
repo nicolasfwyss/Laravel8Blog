@@ -12,12 +12,16 @@ class Table extends Component
 
     public $sortField = 'created_at';
     public $sortDirection = 'desc';
+    public $updated = 0;
+
+    protected $listeners = ["post-updated" => "postUpdated"];
 
     public $filter = [
         'search' => null
     ];
 
-    public function updatedFilter(){
+    public function updatedFilter()
+    {
         $this->resetPage();
     }
 
@@ -32,6 +36,12 @@ class Table extends Component
 
         $this->sortField = $field;
     }
+
+    public function postUpdated()
+    {
+        $this->updated = now();
+    }
+
 
     public function render()
     {

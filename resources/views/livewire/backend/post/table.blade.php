@@ -44,8 +44,7 @@
                     </x-td>--}}
                     <x-td class="">
                         <div class="flex">
-                            <a href="{{ route('admin.post.edit', $post->slug) }}" class="btn btn-secondarya"> <i
-                                    class="px-1 fa fa-pencil-alt fa-fw"></i> </a>
+                            @livewire('edit-modal', ["post"=> $post->toArray()], key($post->id))
                             <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
                                 @method('delete')
                                 @csrf
