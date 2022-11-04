@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center mb-5">
         <div class="shadow-md flex">
             <form action="" method="post">
-                <input type="text" class="form-input" name="search" wire:model="filter.search" placeholder="Filter ...">
+                <input type="text" class="form-input" name="search" wire:keydown.escape="$set('filter.search','')   " wire:model="filter.search" placeholder="Filter ...">
             </form>
 
         </div>
