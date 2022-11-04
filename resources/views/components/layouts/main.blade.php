@@ -17,6 +17,7 @@
             font-family: 'Nunito', sans-serif;
         }
     </style>
+    @livewireStyles
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
 @if(!Route::is(['admin*', 'login', 'register', 'logout', 'password*']))
@@ -55,5 +56,6 @@
 </main>
 <x-layouts.footer/>
 <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
+@livewireScripts
 </body>
 </html>

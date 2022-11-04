@@ -17,11 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::withTrashed()
-            ->orderByDesc('created_at')
-            ->paginate();
 
-        return view('backend.post.index', compact('posts'));
+        return view('backend.post.index');
     }
 
     /**
